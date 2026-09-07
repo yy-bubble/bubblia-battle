@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>風香 vs バブリア</title>
+    <link rel="preload" href="assets/background.webp" as="image" type="image/webp" fetchpriority="high">
+    <link rel="stylesheet" href="styles.css?v=20260802-cast-sprite2">
+  </head>
+  <body>
+    <main class="battle-shell intro-mode" id="battleShell" aria-label="RPG battle scene">
+      <div class="ending-overlay is-hidden" id="endingOverlay" aria-label="エンディング"></div>
+      <div class="status-tooltip is-hidden" id="statusTooltip"></div>
+      <section class="battle-stage" id="battleStage">
+        <div class="turn-ribbon" id="turnRibbon"></div>
+        <div class="panel skill-panel is-hidden" id="skillPanel" aria-label="風香のスキル">
+          <div class="skill-list" id="skillList"></div>
+          <div class="skill-help" id="skillHelp"></div>
+        </div>
+
+        <div class="combatant ally" id="allySlot">
+          <div class="status-tag" id="allyStatusTag">ねむり</div>
+          <div class="sprite-wrap" id="allySpriteWrap">
+            <img class="sprite ally-sprite" id="allySprite" src="assets/fuka-normal.webp" alt="風香">
+            <div class="sweet-breath-smoke" id="sweetBreathSmoke" aria-hidden="true"></div>
+            <canvas class="sleep-bubble" id="sleepBubble" aria-hidden="true"></canvas>
+            <div class="sweet-dream-bubble" id="sweetDreamBubble" aria-hidden="true"></div>
+            <div class="zzz" id="sleepZzz" aria-hidden="true">
+              <span>Z</span>
+              <span>Z</span>
+              <span>Z</span>
+            </div>
+            <div class="drowsy-bubbles" aria-hidden="true">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <div class="damage-pop" id="allyDamage"></div>
+          </div>
+        </div>
+
+        <div class="combatant enemy" id="enemySlot">
+          <div class="sprite-wrap" id="enemySpriteWrap">
+            <div class="enemy-hp-gauge enemy-gauge" id="enemyHpGauge" aria-label="バブリアのHP">
+              <div class="enemy-hp-fill" id="enemyHpGaugeFill"></div>
+            </div>
+            <div class="enemy-special-gauge enemy-gauge" id="enemyGauge" aria-label="バブリアの必殺技ゲージ">
+              <div class="enemy-special-fill" id="enemyGaugeFill"></div>
+              <div class="enemy-special-overfill" id="enemyGaugeOverfill"></div>
+            </div>
+            <img class="sprite enemy-sprite" id="enemySprite" src="assets/bubblia.webp?v=20260712-bubblia2" alt="バブリア">
+            <div class="damage-pop" id="enemyDamage"></div>
+          </div>
+        </div>
+
+        <div class="spell-orb" id="spellOrb" aria-hidden="true">
+          <canvas class="spell-core" id="spellCanvas" aria-hidden="true"></canvas>
+        </div>
+
+        <button class="debug-toggle debug-toggle-spell" type="button" id="debugSpellToggle" hidden>DEBUG シャボン</button>
+        <button class="debug-toggle debug-toggle-bubble" type="button" id="debugSleepBubbleToggle" hidden>DEBUG 鼻</button>
+      </section>
+
+      <section class="hud">
+        <div class="panel stat-panel">
+          <div class="stat-name">風香</div>
+          <div class="stat-vitals">
+            <div class="vital-row hp-row">
+              <div class="vital-fill" id="allyHpFill" style="width: 100%;"></div>
+              <span id="allyHpText">HP 80 / 80</span>
+            </div>
+            <div class="vital-row mp-row">
+              <div class="vital-fill" id="allyMpFill" style="width: 100%;"></div>
+              <span id="allyMpText">MP 60 / 60</span>
+            </div>
+          </div>
+          <div class="embarrassment-gauge" aria-label="風香の恥ずかしさゲージ">
+            <div class="embarrassment-fill" id="embarrassmentFill" style="width: 0%;"></div>
+          </div>
+          <div class="status-list" id="allyState">正常</div>
+        </div>
+
+        <div class="panel command-panel" id="commandPanel">
+          <div class="command-grid" id="commandGrid"></div>
+        </div>
+
+        <div class="panel message-panel">
+          <p id="message"></p>
+        </div>
+      </section>
+    </main>
+
+    <script src="data.js?v=20260802-cast-sprite2"></script>
+    <script src="enemy-ai.js?v=20260802-cast-sprite2"></script>
+    <script src="app.js?v=20260802-cast-sprite2"></script>
+  </body>
+</html>
